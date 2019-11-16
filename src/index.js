@@ -12,8 +12,12 @@
 
  Другими словами: функция должна возвращать в неизменном виде то, что поступает ей на вход
  */
-function returnFirstArgument() {
+
+function returnFirstArgument(a) {
+    return a;
 }
+
+console.log(returnFirstArgument(10));
 
 /*
  Задание 2:
@@ -29,8 +33,12 @@ function returnFirstArgument() {
  Пример:
    sumWithDefaults(10) вернет 110
  */
-function sumWithDefaults(a, b) {
+
+function sumWithDefaults(a, b = 100) {
+    return a + b;
 }
+
+console.log(sumWithDefaults(9));
 
 /*
  Задание 3:
@@ -40,9 +48,12 @@ function sumWithDefaults(a, b) {
  Пример:
    returnFnResult(() => 'привет') вернет 'привет'
  */
-function returnFnResult(fn) {
+function returnFnResult(a) {
+    return a;
 }
 
+let fnSum = a => a;
+console.log(returnFnResult(fnSum(1)));
 /*
  Задание 4:
 
@@ -56,11 +67,17 @@ function returnFnResult(fn) {
    console.log(f()); // выведет 12
    console.log(f()); // выведет 13
  */
+let number = 6;
+
 function returnCounter(number) {
+    return F(number);
 }
 
+let F = number => ++number;
+console.log(returnCounter(number));
+
 /*
- Задание 5 *:
+ Задание 5 *
 
  Функция должна возвращать все переданные ей аргументы в виде массива
  Количество переданных аргументов заранее неизвестно
@@ -69,7 +86,14 @@ function returnCounter(number) {
    returnArgumentsArray(1, 2, 3) вернет [1, 2, 3]
  */
 function returnArgumentsArray() {
+    let array = [];
+    for (let i = 0; i < arguments.length; i++) {
+        array.push(arguments[i]);
+    }
+    return array;
 }
+
+console.log(returnArgumentsArray(1, 2, 4));
 
 /*
  Задание 6 *:
@@ -86,8 +110,15 @@ function returnArgumentsArray() {
 
    console.log(newSum()) выведет 6
  */
+
+
 function bindFunction(fn) {
+    return fn;
 }
+
+let fn = returnFirstArgument.bind(bindFunction, 2);
+
+console.log(fn());
 
 export {
     returnFirstArgument,
