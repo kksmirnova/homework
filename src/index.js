@@ -63,9 +63,8 @@ function returnFnResult(fn) {
  */
 
 function returnCounter(number = 0) {
-    let counter = number;
     return function () {
-        return ++counter;
+        return ++number;
     };
 }
 
@@ -81,7 +80,6 @@ function returnCounter(number = 0) {
 function returnArgumentsArray(...args) {
     return args;
 }
-
 /*
  Задание 6 *:
 
@@ -99,7 +97,9 @@ function returnArgumentsArray(...args) {
  */
 
 function bindFunction(fn, ...args) {
-    return fn.apply(null, args);
+    return function () {
+        return fn.apply(null, args);
+    }
 }
 
 export {
