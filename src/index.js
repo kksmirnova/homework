@@ -22,7 +22,12 @@ function forEach(array, fn) {
  Посмотрите как работает map и повторите это поведение для массива, который будет передан в параметре array
  */
 function map(array, fn) {
-
+    let result = [];
+    for (let i = 0; i < array.length; i++) {
+        let returnValue = fn(array[i], i, array);
+        result.push(returnValue);
+    }
+    return result;
 }
 
 /*
@@ -32,6 +37,12 @@ function map(array, fn) {
  Посмотрите как работает reduce и повторите это поведение для массива, который будет передан в параметре array
  */
 function reduce(array, fn, initial) {
+    let result = initial;
+    for (let i = 0; i < array.length; i++) {
+        let returnValue = fn(null, array[i], i, array, result);
+        result.push(returnValue);
+    }
+    return result;
 }
 
 /*
@@ -43,6 +54,7 @@ function reduce(array, fn, initial) {
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
 function upperProps(obj) {
+    return Object.keys(obj).push(obj.toUpperCase());
 }
 
 /*
@@ -60,7 +72,7 @@ function slice(array, from, to) {
  Функция принимает объект и должна вернуть Proxy для этого объекта
  Proxy должен перехватывать все попытки записи значений свойств и возводить это значение в квадрат
  */
-function createProxy(obj) {
+/*function createProxy(obj) {
 }
 
 export {
@@ -70,4 +82,4 @@ export {
     upperProps,
     slice,
     createProxy
-};
+};*/
