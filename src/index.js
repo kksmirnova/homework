@@ -17,14 +17,10 @@
    isAllTrue([100, 2, 3, 4, 5], n => n < 10) // вернет false
  */
 function isAllTrue(array, fn) {
-    const isInvalidArray = !(array instanceof Array) || array.length === 0;
-    const isNotFunction = typeof fn !== 'function';
-    let result = true;
-
-    if (isInvalidArray) {
+    if (!(array instanceof Array) || array.length === 0) {
         throw new Error('empty array');
     }
-    if (isNotFunction) {
+    if ( typeof fn !== 'function') {
         throw new Error('fn is not a function');
     }
 
@@ -34,7 +30,7 @@ function isAllTrue(array, fn) {
         }
     }
 
-    return result;
+    return true;
 }
 
 /*
@@ -54,14 +50,12 @@ function isAllTrue(array, fn) {
    isSomeTrue([1, 2, 3, 4, 5], n => n > 20) // вернет false
  */
 function isSomeTrue(array, fn) {
-    const isInvalidArray = !(array instanceof Array) || array.length === 0;
-    const isNotFunction = typeof fn !== 'function';
     let result = false;
 
-    if (isInvalidArray) {
+    if (!(array instanceof Array) || array.length === 0) {
         throw new Error('empty array');
     }
-    if (isNotFunction) {
+    if ( typeof fn !== 'function') {
         throw new Error('fn is not a function');
     }
 
@@ -86,10 +80,9 @@ function isSomeTrue(array, fn) {
    - fn не является функцией (с текстом "fn is not a function")
  */
 function returnBadArguments(fn, ...args) {
-    const isNotFunction = typeof fn !== 'function';
     const exceptionsArray = [];
 
-    if (isNotFunction) {
+    if ( typeof fn !== 'function') {
         throw new Error('fn is not a function');
     }
     args.forEach(element => {
@@ -121,9 +114,7 @@ function returnBadArguments(fn, ...args) {
    - какой-либо из аргументов div является нулем (с текстом "division by 0")
  */
 function calculator(number = 0) {
-    const isNotNumber = typeof number !== 'number';
-
-    if (isNotNumber) {
+    if (typeof number !== 'number') {
         throw new Error('number is not a number');
     }
 
