@@ -43,7 +43,6 @@ function reduce(array, fn, initial) {
     }
     return result;
 }
-
 /*
  Задание 4:
 
@@ -63,6 +62,21 @@ function upperProps(obj) {
  Посмотрите как работает slice и повторите это поведение для массива, который будет передан в параметре array
  */
 function slice(array, from, to) {
+    const validDate = (range, length) => (range >= 0 ? range : length + range);
+    const resultArray = [];
+    const validFrom = validDate(from, array.length);
+    const validTo = validDate(to, array.length) - 1;
+
+    for (let i = 0; i < array.length; i++) {
+        if (i < validFrom || i > validTo) {
+            continue;
+        }
+        const element = array[i];
+
+        resultArray.push(element);
+    }
+
+    return resultArray;
 }
 
 /*
@@ -72,8 +86,14 @@ function slice(array, from, to) {
  Proxy должен перехватывать все попытки записи значений свойств и возводить это значение в квадрат
  */
 function createProxy(obj) {
+    const proxyObj = new Proxy(obj,{
+        set(target, prop, value) {
+            target[prop] = value * value;
+            return this;
+        },
+    });
+    return proxyObj;
 }
-
 export {
     forEach,
     map,
